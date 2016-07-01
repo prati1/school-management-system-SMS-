@@ -48,7 +48,7 @@ create table guardian(
 	address_district VARCHAR(20),
 	address_zone VARCHAR(20),
 	address_country VARCHAR(20),
-	phone_no INT,
+	phone_no BIGINT,
 	relation VARCHAR(20),
 	email_id VARCHAR(50),
 	student_id INT references student(student_id)
