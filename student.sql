@@ -38,7 +38,7 @@ address_perm_district,address_perm_zone,address_perm_country,address_temp_street
 ('12313','Kiran','','Prajapati','Female','1995-03-24','2052-02-11','2013-01-12','krnprz@gmail.com','2','4','Sankhutole','04','Bhaktapur','Bhaktapur','Bagmati','Nepal','28 Kilo','16','Dhulikhel','Kavre','Bagmati','Nepal');
 
 create table guardian(
-	guardian_id INT,
+	guardian_id VARCHAR NOT NULL,
 	gfirst_name VARCHAR(20) NOT NULL,
 	gmiddle_name VARCHAR(20),
 	glast_name VARCHAR(20) NOT NULL,
