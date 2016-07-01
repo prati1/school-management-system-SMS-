@@ -51,7 +51,7 @@ create table guardian(
 	phone_no INT,
 	relation VARCHAR(20),
 	email_id VARCHAR(50),
-	std_id INT references student(student_id)
+	student_id INT references student(student_id)
 	);
 
 insert into guardian(guardian_id, gfirst_name, gmiddle_name, glast_name,address_street,address_ward,address_vdcmun,address_district,address_zone,address_country,
