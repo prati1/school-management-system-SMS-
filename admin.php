@@ -26,7 +26,7 @@
 
 </head>
 <body>
-<div style = "background-color:#333333; color:#FFFFFF; padding:3px;"><b>working</b></div>
+
 <?php
 /* 
 	ADMIN.PHP
@@ -36,7 +36,7 @@
 	 session_start();
 	 
 	// get results from database
-	$result = mysql_query("SELECT * FROM sms.administration") 
+	$result = mysql_query("SELECT * FROM sms.administration group by student_roll") 
 		or die(mysql_error());  
 	
 	// display data in table
