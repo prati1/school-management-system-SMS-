@@ -88,10 +88,54 @@
  if (isset($_POST['submit']))
  { 
  // confirm that the 'id' value is a valid integer before getting the form data
- if (is_numeric($_POST['studentid']))
+ if (is_numeric($_POST['student_id']))
  {
  // get form data, making sure it is valid
- $std_id = $_POST['studentid'];
+ $studentid = $_POST['studentid'];
+	$firstname = $_POST['firstname'];
+	$middlename = $_POST['middlename'];
+	$lastname = $_POST['lastname'];
+	$gender = $_POST['gender'];
+	$date_of_admission = $_POST['admissiondate'];
+	$DOBad = $_POST['DOBad'];
+	$DOBbs = $_POST['DOBbs'];
+	$std_email = $_POST['studentemail'];
+	$adm_standard = $_POST['admstandard'];
+	$roll_no = $_POST['rollno'];
+	$std_temp_street = $_POST['stdtempstreet'];
+	$std_temp_ward = $_POST['stdtempward'];
+	$std_temp_vdc = $_POST['stdtempvdc'];
+	$std_temp_district = $_POST['stdtempdistrict'];
+	$std_temp_zone = $_POST['stdtempzone'];
+	$std_temp_country = $_POST['stdtempcountry'];
+	$std_perm_street = $_POST['stdpermstreet'];
+	$std_perm_ward = $_POST['stdpermward'];
+	$std_perm_vdc = $_POST['stdpermvdc'];
+	$std_perm_district = $_POST['stdpermdistrict'];
+	$std_perm_zone = $_POST['stdpermzone'];
+	$std_perm_country = $_POST['stdpermcountry'];
+	
+	$guardianid = $_POST['guardianid'];
+	$gfirstname = $_POST['gfirstname'];
+	$gmiddlename = $_POST['gmiddlename'];
+	$glastname = $_POST['glastname'];
+	$phone = $_POST['phone'];
+	$relation = $_POST['relation'];
+	$guardianemail = $_POST['guardianemail'];
+	$guardian_street = $_POST['guardianstreet'];
+	$guardian_ward = $_POST['guardianward'];
+	$guardian_vdc = $_POST['guardianvdc'];
+	$guardian_district = $_POST['guardiandistrict'];
+	$guardian_zone = $_POST['guardianzone'];
+	$guardian_country = $_POST['guardiancountry'];
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ $std_id = $_POST['student_id'];
 
  $firstname = mysql_real_escape_string($firstname);
  $middlename = mysql_real_escape_string($middlename);
@@ -144,8 +188,18 @@ $gfirstname = mysql_real_escape_string($gfirstname);
  else
  {
  // save the data to the database
- mysql_query("UPDATE players SET firstname='$firstname', middlename ='$middlename', lastname='$lastname', gender='$gender', date_of_admission='$date_of_admission', DOBad='$DOBad', email_id='$std_email', admitted_std='$adm_standard', student_roll='$roll_no', address_temp_street='$std_temp_street', address_temp_ward='$std_temp_ward', address_temp_vdcmun='$std_temp_vdc', address_temp_district='$std_temp_district', address_temp_zone='$std_temp_zone', address_temp_country='$std_temp_country', address_perm_street='$std_perm_street',address_perm_ward='$std_perm_ward', address_perm_vdcum='$std_perm_vdcum', address_perm_district='$std_perm_district', address_perm_zone='$std_perm_zone', address_perm_country='$std_perm_country' WHERE studentid='$studentid'")
- or die(mysql_error()); 
+ //mysql_query("UPDATE players SET firstname='$firstname', middlename ='$middlename', lastname='$lastname', gender='$gender', date_of_admission='$date_of_admission', DOBad='$DOBad', email_id='$std_email', admitted_std='$adm_standard', student_roll='$roll_no', address_temp_street='$std_temp_street', address_temp_ward='$std_temp_ward', address_temp_vdcmun='$std_temp_vdc', address_temp_district='$std_temp_district', address_temp_zone='$std_temp_zone', address_temp_country='$std_temp_country', address_perm_street='$std_perm_street',address_perm_ward='$std_perm_ward', address_perm_vdcum='$std_perm_vdcum', address_perm_district='$std_perm_district', address_perm_zone='$std_perm_zone', address_perm_country='$std_perm_country' WHERE studentid='$studentid'")
+// or die(mysql_error()); 
+ 
+  mysql_query("UPDATE into sms.student(student_id,first_name,middle_name,last_name,gender,date_of_admission,DOBad,DOBbs,email_id,admitted_std,student_roll,
+ address_temp_street, address_temp_ward,address_temp_vdcmun,address_temp_district,address_temp_zone,address_temp_country,address_perm_street, address_perm_ward,address_perm_vdcmun,address_perm_district,address_perm_zone,address_perm_country) VALUES
+ ('$studentid','$firstname', '$middlename','$lastname','$gender','$date_of_admission','$DOBad','$DOBbs','$std_email','$adm_standard', '$roll_no',
+ '$std_temp_street','$std_temp_ward','$std_temp_vdc','$std_temp_district','$std_temp_zone','$std_temp_country','$std_perm_street','$std_perm_ward','$std_perm_vdc','$std_perm_district','$std_perm_zone','$std_perm_country')")
+ or die(mysql_error());
+ 
+ mysql_query("UPDATE into sms.guardian(guardian_id,gfirst_name,gmiddle_name,glast_name,phone_no,relation,email_id,address_street,address_ward,address_vdcmun,address_district,address_zone,address_country,student_id) VALUES
+ ('$guardianid','$gfirstname','$gmiddlename','$glastname','$phone','$relation','$guardianemail','$guardian_street','$guardian_ward','$guardian_vdc','$guardian_district','$guardian_zone','$guardian_country','$studentid')")
+ or die(mysql_error());
  
  // once saved, redirect back to the view page
  header("Location: admin.php"); 
@@ -162,11 +216,11 @@ $gfirstname = mysql_real_escape_string($gfirstname);
  {
  
  // get the 'id' value from the URL (if it exists), making sure that it is valid (checing that it is numeric/larger than 0)
- if (isset($_GET['studentid']) && is_numeric($_GET['studentid']) && $_GET['studentid'] > 0)
+ if (isset($_GET['student_id']) && is_numeric($_GET['student_id']) && $_GET['student_id'] > 0)
  {
  // query db
- $std_id = $_GET['studentid'];
- $result = mysql_query("SELECT * FROM players WHERE id=$std_id")
+ $std_id = $_GET['student_id'];
+ $result = mysql_query("SELECT * FROM sms.student s,sms.guardian g,sms.administration a WHERE s.student_id=$std_id")
  or die(mysql_error()); 
  $row = mysql_fetch_array($result);
  
@@ -197,12 +251,25 @@ $gfirstname = mysql_real_escape_string($gfirstname);
  $std_perm_zone = $row['address_perm_zone'];
  $std_perm_country = $row['address_perm_country'];
 
- 
+ 	$guardianid = $row['guardianid'];
+	$gfirstname = $row['gfirstname'];
+	$gmiddlename = $row['gmiddlename'];
+	$glastname = $row['glastname'];
+	$phone = $row['phone'];
+	$relation = $row['relation'];
+	$guardianemail = $row['guardianemail'];
+	$guardian_street = $row['guardianstreet'];
+	$guardian_ward = $row['guardianward'];
+	$guardian_vdc = $row['guardianvdc'];
+	$guardian_district = $row['guardiandistrict'];
+	$guardian_zone = $row['guardianzone'];
+	$guardian_country = $row['guardiancountry'];
 
  
  // show form
  renderForm($std_id, $firstname, $middlename, $lastname, $gender, $date_of_admission,$DOBad,$DOBbs,$std_email,$adm_standard, $roll_no,$std_temp_street,$std_temp_ward,$std_temp_vdc,$std_temp_district,
- $std_temp_zone,$std_temp_country,$std_perm_street,$std_perm_ward,$std_perm_vdc,$std_perm_district,$std_perm_zone,$std_perm_country,'');
+ $std_temp_zone,$std_temp_country,$std_perm_street,$std_perm_ward,$std_perm_vdc,$std_perm_district,$std_perm_zone,$std_perm_country,$guardianid,$gfirstname,$middlename,$glastname,
+ $phone,$relation,$guardianemail,$guardian_street,$guardian_ward,$guardian_vdc,$guardian_district,$guardian_zone,$guardian_country,'');
  }
  else
  // if no match, display result
