@@ -35,6 +35,7 @@
 	 include('config.php');
 	 session_start();
 	 
+
 	// get results from database
 	$result = mysql_query("SELECT * FROM sms.administration group by student_roll") 
 		or die(mysql_error());  
@@ -47,10 +48,14 @@
 
 	// loop through results of database query, displaying them in the table
 	while($row = mysql_fetch_array( $result )) {
-		
+		$id=$row['student_id'];
 		// echo out the contents of each row into a table
 		echo "<tr>";
-		echo '<td>' . $row['student_id'] . '</td>';
+				//echo '<td>'<a href="adminfullview.php?student_id=' . $row['student_id'] . '"> . $row['student_id'] . </a>'</td>';
+		
+		
+		//echo '<td>' . $row['student_id'] . '</td>';
+		echo '<td><a href="adminfullview.php?student_id=' . $row['student_id'] . '">$id</a></td>';
 		echo '<td>' . $row['student_roll'] . '</td>';
 		echo '<td>' . $row['Name'] . '</td>';
 		echo '<td>' . $row['gender'] . '</td>';
@@ -61,7 +66,7 @@
 		echo '<td>' . $row['gName'] . '</td>';
 		echo '<td>' . $row['phone_no'] . '</td>';
 		echo '<td>' . $row['email_id'] . '</td>';
-		//echo '<td><a href="edit.php?id=' . $row['id'] . '">Edit</a></td>';
+		echo '<td><a href="edit.php?student_id=' . $row['student_id'] . '">Edit</a></td>';
 		echo '<td><a href="deletestudent.php?student_id=' . $row['student_id'] . '">Delete</a></td>';
 		//echo '<td><a href="#?student_id=' . $row['student_id'] . '" onclick="getConfirmation()">Delete</button></a></td>';
 		echo "</tr>"; 
