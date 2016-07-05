@@ -1,3 +1,8 @@
+drop table standard;
+drop table fee;
+drop table tuition_fee;
+drop table buss_fee;
+drop table hostel_fee;
 create table if not exists standard(
 	standard_id int,
 	standard_name varchar(10),
@@ -9,7 +14,7 @@ create table if not exists fee(
 	fee_pk int,
 	status varchar(5),
 	due_amount float(20),
-	type ENUM("tuition_fee", "bus_fee","hostel_fee")NOT NULL),
+	type ENUM("tuition_fee", "bus_fee","hostel_fee")NOT NULL,
 	PRIMARY KEY(fee_pk)
 	); 
 
