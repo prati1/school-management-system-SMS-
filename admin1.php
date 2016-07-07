@@ -78,8 +78,8 @@
 		echo '<td>' . $row['phone_no'] . '</td>';
 		echo '<td>' . $row['email_id'] . '</td>';
 		echo '<td><a href="edit.php?student_id=' . $row['student_id'] . '">Edit</a></td>';
-		echo '<td><a href="deletestd.php?student_id=' . $row['student_id'] . '">Delete</a></td>';
-		//echo '<td><a href="#?student_id=' . $row['student_id'] . '" onclick="getConfirmation()">Delete</button></a></td>';
+		//echo '<td><a href="deletestd.php?student_id=' . $row['student_id'] . '">Delete</a></td>';
+		echo '<td><a href="#?student_id=' . $row['student_id'] . '" onclick="delnews('$row->student_id','$row->first_name')">Delete</button></a></td>';
 
        //echo '<td><a href="javascript:delnews('$row->student_id','$row->first_name')">Delete</a></td>';
 		//echo "<ul>n";
