@@ -3,7 +3,6 @@
  EDIT.PHP
  Allows user to edit specific entry in database
 */
-
  // creates the edit record form
  // since this form is used multiple times in this file, I have made it a function that is easily reusable
  function renderForm($std_id,$first, $middle,$last,$gender,$date_of_admi,$DOBa,$DOBb,$std_email,$adm_standard, $Roll,$std_temp_street,$std_temp_ward,$std_temp_vdc,$std_temp_district,
@@ -14,6 +13,12 @@
  <html>
  <head>
  <title>Edit Record</title>
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css" rel="stylesheet"/>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
  </head>
  <body>
  <?php 
@@ -28,48 +33,155 @@
  <input type="hidden" name="id" value="<?php echo $id; ?>"/>
  <div>
 <p>STUDENT INFORMATION</p>
-  <strong>Registration Number: *</strong> <input type="text" name="studentid" value="<?php echo $std_id; ?>" /><br/>
- <strong>First Name: *</strong> <input type="text" name="firstname" value="<?php echo $first; ?>" /><br/>
- <strong>Middle Name:</strong> <input type="text" name="middlename" value="<?php echo $middle; ?>" /><br/>
- <strong>Last Name: *</strong> <input type="text" name="lastname" value="<?php echo $last; ?>" /><br/>
-  <strong>Gender: *</strong> <input type="text" name="gender" value="<?php echo $gender; ?>" /><br/>
-   <strong>Date of Admission: </strong> <input type="date" name="admissiondate" value="<?php echo $date_of_admi; ?>" /><br/>
-    <strong>Date of Birth(AD): *</strong> <input type="date" name="DOBad" value="<?php echo $DOBa; ?>" /><br/>
-	 <strong>Date of Birth(BS): </strong> <input type="text" name="DOBbs" value="<?php echo $DOBb; ?>" /><br/>
-	  <strong>Email ID: </strong> <input type="text" name="studentemail" value="<?php echo $std_email; ?>" /><br/>
-	<strong>Admitted Standard: *</strong> <input type="text" name="admstandard" value="<?php echo $adm_standard; ?>" /><br/>
-	 <strong>Roll No: *</strong> <input type="number" name="rollno" value="<?php echo $Roll; ?>" /><br/>
-	 <p>Temporary Address</p>
-	  <strong>Street: </strong> <input type="text" name="stdtempstreet" value="<?php echo $std_temp_street; ?>" /><br/>
-	   <strong>Ward: </strong> <input type="text" name="stdtempward" value="<?php echo $std_temp_ward; ?>" /><br/>
-	    <strong>VDC/Municipality: </strong> <input type="text" name="stdtempvdc" value="<?php echo $std_temp_vdc; ?>" /><br/>
-		 <strong>District: </strong> <input type="text" name="stdtempdistrict" value="<?php echo $std_temp_district; ?>" /><br/>
-		  <strong>Zone: </strong> <input type="text" name="stdtempzone" value="<?php echo $std_temp_zone; ?>" /><br/>
-		   <strong>Country: </strong> <input type="text" name="stdtempcountry" value="<?php echo $std_temp_country; ?>" /><br/>
-		 	 <p>Permanent Address</p>
-	  <strong>Street: </strong> <input type="text" name="stdpermstreet" value="<?php echo $std_perm_street; ?>" /><br/>
-	   <strong>Ward: </strong> <input type="text" name="stdpermward" value="<?php echo $std_perm_ward; ?>" /><br/>
-	    <strong>VDC/Municipality: </strong> <input type="text" name="stdpermvdc" value="<?php echo $std_perm_vdc; ?>" /><br/>
-		 <strong>District: </strong> <input type="text" name="stdpermdistrict" value="<?php echo $std_perm_district; ?>" /><br/>
-		  <strong>Zone: </strong> <input type="text" name="stdpermzone" value="<?php echo $std_perm_zone; ?>" /><br/>
-		   <strong>Country: </strong> <input type="text" name="stdpermcountry" value="<?php echo $std_perm_country; ?>" /><br/>
-		   
+  <div class="row">
+	<div class="input-field col s12">
+      <input value="<?php echo $std_id; ?>" id="studentid" type="text" class="validate">
+      <label class="active" for="studentid">Registration Number:*</label>
+    </div>  <div class="row">
+	<div class="input-field col s4">
+      <input value="<?php echo $first; ?>" id="firstname" type="text" class="validate">
+      <label class="active" for="firstname">Registration Number:*</label>
+    </div>
+ <div class="input-field col s4">
+      <input value="<?php echo $middle; ?>" id="middlename" type="text" class="validate">
+      <label class="active" for="middlename">Middle Name:</label>
+    </div>
+	<div class="input-field col s4">
+      <input value="<?php echo $last; ?>" id="lastname" type="text" class="validate">
+      <label class="active" for="lastname">Last Name:</label>
+    </div>
+	<div class="input-field col s4">
+      <input value="<?php echo $gender; ?>" id="gender" type="text" class="validate">
+      <label class="active" for="gender">Gender:</label>
+    </div>
+	<div class="input-field col s12">
+      <input value="<?php echo $date_of_admi; ?>" id="admissiondate" type="date" class="validate">
+      <label class="active" for="admissiondate">Date of Admission:</label>
+    </div>
+	<div class="input-field col s12">
+      <input value="<?php echo $DOBa; ?>" id="DOBad" type="text" class="validate">
+      <label class="active" for="DOBad">Date of Birth(AD):*</label>
+    </div>
+	<div class="input-field col s12">
+      <input value="<?php echo $DOBb; ?>" id="DOBbs" type="text" class="validate">
+      <label class="active" for="DOBbs">Date of Birth(BS):</label>
+    </div>
+	<div class="input-field col s12">
+      <input value="<?php echo $std_email; ?>" id="studentemail" type="text" class="validate">
+      <label class="active" for="studentemail">Email ID</label>
+    </div>
+	<div class="input-field col s12">
+      <input value="<?php echo $adm_standard; ?>" id="admstandard" type="text" class="validate">
+      <label class="active" for="admstandard">Admitted Standard:</label>
+    </div>
+	<div class="input-field col s12">
+      <input value="<?php echo $Roll; ?>" id="rollno" type="text" class="validate">
+      <label class="active" for="rollno">Roll No.:*</label>
+    </div>
+	<p>Temporary Address</p>
+	<div class="input-field col s12">
+      <input value="<?php echo $std_temp_street; ?>" id="stdtempstreet" type="text" class="validate">
+      <label class="active" for="stdtempstreet">Street:</label>
+    </div>
+	<div class="input-field col s12">
+      <input value="<?php echo $std_temp_ward; ?>" id="stdtempward" type="text" class="validate">
+      <label class="active" for="stdtempward">Ward:</label>
+    </div>
+	<div class="input-field col s12">
+      <input value="<?php echo $std_temp_vdc; ?>" id="stdtempvdc" type="text" class="validate">
+      <label class="active" for="stdtempvdc">VDC/Municipality:</label>
+    </div><div class="input-field col s12">
+      <input value="<?php echo $std_temp_district; ?>" id="stdtempdistrict" type="text" class="validate">
+      <label class="active" for="stdtempdistrict">District:</label>
+    </div>
+	<div class="input-field col s12">
+      <input value="<?php echo $std_temp_zone; ?>" id="stdtempzone" type="text" class="validate">
+      <label class="active" for="stdtempzone">Zone:</label>
+    </div>
+	<div class="input-field col s12">
+      <input value="<?php echo $std_temp_country; ?>" id="stdtempcountry" type="text" class="validate">
+      <label class="active" for="stdtempcountry">Country:</label>
+    </div>
+	<p>Permanent Address</p>
+	<div class="input-field col s12">
+      <input value="<?php echo $std_perm_street; ?>" id="stdpermstreet" type="text" class="validate">
+      <label class="active" for="stdpermstreet">Street:</label>
+    </div>
+	<div class="input-field col s12">
+      <input value="<?php echo $std_perm_ward; ?>" id="stdpermward" type="text" class="validate">
+      <label class="active" for="stdpermward">Ward:</label>
+    </div>
+	<div class="input-field col s12">
+      <input value="<?php echo $std_perm_vdc; ?>" id="stdpermvdc" type="text" class="validate">
+      <label class="active" for="stdpermvdc">VDC/Municipality:</label>
+    </div>
+	<div class="input-field col s12">
+      <input value="<?php echo $std_perm_district; ?>" id="stdpermdistrict" type="text" class="validate">
+      <label class="active" for="stdpermdistrict">District:</label>
+    </div>
+	<div class="input-field col s12">
+      <input value="<?php echo $std_perm_zone; ?>" id="stdpermzone" type="text" class="validate">
+      <label class="active" for="stdpermzone">Zone:</label>
+    </div>
+	<div class="input-field col s12">
+      <input value="<?php echo $std_perm_country; ?>" id="stdpermcountry" type="text" class="validate">
+      <label class="active" for="stdpermcountry">Country:</label>
+    </div>
 <p>GUARDIAN INFORMATION</p>
-  <strong>Guardian ID: *</strong> <input type="text" name="guardianid" value="<?php echo $guardian_id; ?>" /><br/>
- <strong>First Name: *</strong> <input type="text" name="gfirstname" value="<?php echo $gfirst; ?>" /><br/>
- <strong>Middle Name:</strong> <input type="text" name="gmiddlename" value="<?php echo $gmiddle; ?>" /><br/>
- <strong>Last Name: *</strong> <input type="text" name="glastname" value="<?php echo $glast; ?>" /><br/>
-  <strong>Phone Number: *</strong> <input type="text" name="phone" value="<?php echo $phone; ?>" /><br/>
-   <strong>Relation: *</strong> <input type="text" name="relation" value="<?php echo $relation; ?>" /><br/>
-    <strong>Email ID: </strong> <input type="text" name="guardianemail" value="<?php echo $gemail; ?>" /><br/>
-	<p>Address</p>
-	<strong>Street: </strong> <input type="text" name="guardianstreet" value="<?php echo $guardian_street; ?>" /><br/>
-	   <strong>Ward: </strong> <input type="text" name="guardianward" value="<?php echo $guardian_ward; ?>" /><br/>
-	    <strong>VDC/Municipality: </strong> <input type="text" name="guardianvdc" value="<?php echo $guardian_vdc; ?>" /><br/>
-		 <strong>District: </strong> <input type="text" name="guardiandistrict" value="<?php echo $guardian_district; ?>" /><br/>
-		  <strong>Zone: </strong> <input type="text" name="guardianzone" value="<?php echo $guardian_zone; ?>" /><br/>
-		   <strong>Country: </strong> <input type="text" name="guardiancountry" value="<?php echo $guardian_country; ?>" /><br/>
-		   
+<div class="input-field col s12">
+      <input value="<?php echo $guardian_id; ?>" id="guardianid" type="text" class="validate">
+      <label class="active" for="guardianid">Guardian ID:*</label>
+    </div>
+	<div class="input-field col s4">
+      <input value="<?php echo $gfirst; ?>" id="gfirstname" type="text" class="validate">
+      <label class="active" for="gfirstname">First Name:*</label>
+    </div>
+	<div class="input-field col s4">
+      <input value="<?php echo $gmiddle; ?>" id="gmiddlename" type="text" class="validate">
+      <label class="active" for="gmiddlename">Middle Name:</label>
+    </div>
+	<div class="input-field col s4">
+      <input value="<?php echo $glast; ?>" id="glastname" type="text" class="validate">
+      <label class="active" for="glastname">Last Name:*</label>
+    </div>
+	<div class="input-field col s12">
+      <input value="<?php echo $phone; ?>" id="phone" type="text" class="validate">
+      <label class="active" for="phone">Phone Number:*</label>
+    </div>
+	<div class="input-field col s12">
+      <input value="<?php echo $relation; ?>" id="relation" type="text" class="validate">
+      <label class="active" for="relation">Relation:*</label>
+    </div>
+	<div class="input-field col s12">
+      <input value="<?php echo $gemail; ?>" id="guardianemail" type="text" class="validate">
+      <label class="active" for="guardianemail">Email ID:</label>
+    </div>
+ <p>Address</p>
+	<div class="input-field col s12">
+      <input value="<?php echo $guardian_street; ?>" id="guardianstreet" type="text" class="validate">
+      <label class="active" for="guardianstreet">Street:</label>
+    </div>
+	<div class="input-field col s12">
+      <input value="<?php echo $guardian_ward; ?>" id="guardianward" type="text" class="validate">
+      <label class="active" for="guardianward">Ward:</label>
+    </div>
+	<div class="input-field col s12">
+      <input value="<?php echo $guardian_vdc; ?>" id="guardianvdc" type="text" class="validate">
+      <label class="active" for="guardianvdc">VDC/Municipality:</label>
+    </div>
+	<div class="input-field col s12">
+      <input value="<?php echo $guardian_district; ?>" id="guardiandistrict" type="text" class="validate">
+      <label class="active" for="guardiandistrict">District:</label>
+    </div>
+	<div class="input-field col s12">
+      <input value="<?php echo $guardian_zone; ?>" id="guardianzone" type="text" class="validate">
+      <label class="active" for="guardianzone">Zone:</label>
+    </div>
+	<div class="input-field col s12">
+      <input value="<?php echo $guardian_country; ?>" id="guardiancountry" type="text" class="validate">
+      <label class="active" for="guardiancountry">Country:</label>
+    </div>
+  </div>
  <p>* required</p>
  <input type="submit" name="submit" value="Submit">
  </div>
@@ -78,9 +190,6 @@
  </html> 
  <?php
  }
-
-
-
  // connect to the database
  include('config.php');
  
@@ -136,7 +245,6 @@
  
  
  $studentid = $_GET['student_id'];
-
  $firstname = mysql_real_escape_string($firstname);
  $middlename = mysql_real_escape_string($middlename);
  $lastname = mysql_real_escape_string($lastname);
@@ -211,7 +319,6 @@ $gfirstname = mysql_real_escape_string($gfirstname);
  
  // once saved, redirect back to the view page
  header("Location: admin.php"); 
-
  }
 // }
  //else
@@ -260,7 +367,6 @@ $gfirstname = mysql_real_escape_string($gfirstname);
  $std_perm_district = $row['address_perm_district'];
  $std_perm_zone = $row['address_perm_zone'];
  $std_perm_country = $row['address_perm_country'];
-
  	$guardianid = $row['guardian_id'];
 	$gfirstname = $row['gfirst_name'];
 	$gmiddlename = $row['gmiddle_name'];
@@ -274,7 +380,6 @@ $gfirstname = mysql_real_escape_string($gfirstname);
 	$guardian_district = $row['address_district'];
 	$guardian_zone = $row['address_zone'];
 	$guardian_country = $row['address_country'];
-
  
  // show form
  renderForm($std_id, $firstname, $middlename, $lastname, $gender, $date_of_admission,$DOBad,$DOBbs,$std_email,$adm_standard, $roll_no,$std_temp_street,$std_temp_ward,$std_temp_vdc,$std_temp_district,

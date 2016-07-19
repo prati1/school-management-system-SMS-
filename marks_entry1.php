@@ -16,7 +16,6 @@
  	width: 200px;
  	text-align: right;
  	padding-right: 15px;
-
  	margin-top: 12px;
  	clear: left;
 }
@@ -24,16 +23,20 @@ input, textarea {margin-top: 12px;}
 #regisform {
 	background-color: #CFF;
 	width: 80%;
-
 }
 #submitbutton {
 	margin-left: 150px;
 	padding: 15px;
-
 }
 </style>
  <head>
  <title>New Record for Marks</title>
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css" rel="stylesheet"/>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
  </head>
  <body>
  <?php 
@@ -47,18 +50,49 @@ input, textarea {margin-top: 12px;}
  <form action="" method="post">
  <div>
  <p>STUDENT INFO</p>
-  <strong>Registration Number: *</strong> <input type="text" name="studentid" value="<?php echo $std_id; ?>" /><br/>
- <strong>Standard: *</strong> <input type="text" name="standardid" value="<?php echo $standard_id; ?>" /><br/>
- <p>Marks</p>
-	  <strong>English: </strong> <input type="text" name="english" value="<?php echo $eng; ?>" /><br/>
-	   <strong>Nepali: </strong> <input type="text" name="nepali" value="<?php echo $nep; ?>" /><br/>
-	    <strong>Mathematics: </strong> <input type="text" name="maths" value="<?php echo $math; ?>" /><br/>
-		 <strong>Science: </strong> <input type="text" name="science" value="<?php echo $sci; ?>" /><br/>
-		  <strong>Environment and Population Education: </strong> <input type="text" name="enve" value="<?php echo $enve; ?>" /><br/>
+  <div class="row">
+	<div class="input-field col s12">
+      <input value="<?php echo $std_id; ?>" id="studentid" type="text" class="validate">
+      <label class="active" for="studentid">Registration Number:*</label>
+    </div>
+	 
+	<div class="input-field col s12">
+      <input value="<?php echo $standard_id_id; ?>" id="standardid" type="text" class="validate">
+      <label class="active" for="standardid">Standard:*</label>
+    </div>
+  <p>Marks</p>
+   <div class="row">
+	<div class="input-field col s12">
+      <input value="<?php echo $eng; ?>" id="english" type="text" class="validate">
+      <label class="active" for="englishish">English:*</label>
+    </div>
+	<div class="input-field col s12">
+      <input value="<?php echo $nep; ?>" id="nepali" type="text" class="validate">
+      <label class="active" for="nepali">Nepali:*</label>
+    </div>
+	<div class="input-field col s12">
+      <input value="<?php echo $math; ?>" id="maths" type="text" class="validate">
+      <label class="active" for="maths">Mathematics:*</label>
+    </div>
+	<div class="input-field col s12">
+      <input value="<?php echo $sci; ?>" id="science" type="text" class="validate">
+      <label class="active" for="science">Science:*</label>
+    </div>
+	<div class="input-field col s12">
+      <input value="<?php echo $enve; ?>" id="enve" type="text" class="validate">
+      <label class="active" for="enve">Environment and Population:*</label>
+    </div>
+<div class="input-field col s12">
+      <input value="<?php echo $soc; ?>" id="social" type="text" class="validate">
+      <label class="active" for="social">Social Studies*</label>
+    </div>
+	<div class="input-field col s12">
+      <input value="<?php echo $comp; ?>" id="computer" type="text" class="validate">
+      <label class="active" for="computer">Registration Number:*</label>
+    </div>
 		 
-	  <strong>Social Studies: </strong> <input type="text" name="social" value="<?php echo $soc; ?>" /><br/>
-	   <strong>Computer Science: </strong> <input type="text" name="computer" value="<?php echo $comp; ?>" /><br/>
-		   
+	   </div>
+	
  <p>* required</p>
  <input type="submit" name="submit" value="SUBMIT">
  </div>
@@ -70,7 +104,6 @@ input, textarea {margin-top: 12px;}
  
  
  
-
  // connect to the database
  include('config.php');
  
@@ -90,9 +123,7 @@ input, textarea {margin-top: 12px;}
 	
 				
 	
-
  
-
  $studentid = mysql_real_escape_string($studentid);
  $standardid = mysql_real_escape_string($standardid);
  $english = mysql_real_escape_string($english);
