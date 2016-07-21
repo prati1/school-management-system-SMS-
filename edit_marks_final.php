@@ -3,7 +3,6 @@
  EDIT.PHP
  Allows user to edit specific entry in database
 */
-
  // creates the edit record form
  // since this form is used multiple times in this file, I have made it a function that is easily reusable
  function renderForm($std_id,$standard_id,$eng,$nep,$math,$comp,$soc,$enve,$sci,$error)
@@ -12,6 +11,12 @@
  <html>
  <head>
  <title>Edit Record</title>
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css" rel="stylesheet"/>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
  </head>
  <body>
  <?php 
@@ -26,16 +31,50 @@
  <input type="hidden" name="id" value="<?php echo $id; ?>"/>
  <div>
 <p>STUDENT INFO</p>
-<strong>Registration Number: *</strong> <input type="text" name="studentid" value="<?php echo $std_id; ?>" /><br/>
-<strong>Standard: *</strong> <input type="text" name="standardid" value="<?php echo $standard_id; ?>" /><br/>
+ <div class="row">
+	<div class="input-field col s12">
+      <input value="<?php echo $std_id; ?>" id="studentid" type="text" class="validate">
+      <label class="active" for="studentid">Registration Number:*</label>
+    </div>
+	 
+	<div class="input-field col s12">
+      <input value="<?php echo $standard_id; ?>" id="standardid" type="text" class="validate">
+      <label class="active" for="standardid">Standard:*</label>
+
 <p>Marks</p>
-<strong>English: </strong> <input type="text" name="english" value="<?php echo $eng; ?>" /><br/>
-<strong>Nepali: </strong> <input type="text" name="nepali" value="<?php echo $nep; ?>" /><br/>
-<strong>Mathematics: </strong> <input type="text" name="maths" value="<?php echo $math; ?>" /><br/>
-<strong>Science: </strong> <input type="text" name="science" value="<?php echo $sci; ?>" /><br/>
-<strong>Environment and Population Education: </strong> <input type="text" name="enve" value="<?php echo $enve; ?>" /><br/>
-<strong>Social Studies: </strong> <input type="text" name="social" value="<?php echo $soc; ?>" /><br/>
-<strong>Computer Science: </strong> <input type="text" name="computer" value="<?php echo $comp; ?>" /><br/>
+  <div class="row">
+	<div class="input-field col s12">
+      <input value="<?php echo $eng; ?>" id="english" type="text" class="validate">
+      <label class="active" for="englishish">English:*</label>
+    </div>
+	<div class="input-field col s12">
+      <input value="<?php echo $nep; ?>" id="nepali" type="text" class="validate">
+      <label class="active" for="nepali">Nepali:*</label>
+    </div>
+	<div class="input-field col s12">
+      <input value="<?php echo $math; ?>" id="maths" type="text" class="validate">
+      <label class="active" for="maths">Mathematics:*</label>
+    </div>
+	<div class="input-field col s12">
+      <input value="<?php echo $sci; ?>" id="science" type="text" class="validate">
+      <label class="active" for="science">Science:*</label>
+    </div>
+	<div class="input-field col s12">
+      <input value="<?php echo $enve; ?>" id="enve" type="text" class="validate">
+      <label class="active" for="enve">Environment and Population:*</label>
+    </div>
+<div class="input-field col s12">
+      <input value="<?php echo $soc; ?>" id="social" type="text" class="validate">
+      <label class="active" for="social">Social Studies*</label>
+    </div>
+	<div class="input-field col s12">
+      <input value="<?php echo $comp; ?>" id="computer" type="text" class="validate">
+      <label class="active" for="computer">Registration Number:*</label>
+    </div>
+		 
+	   </div>
+		   
+
 <p>* required</p>
 <input type="submit" name="submit" value="SUBMIT">
  </div>
@@ -44,9 +83,6 @@
  </html> 
  <?php
  }
-
-
-
  // connect to the database
  include('config.php');
  
@@ -66,7 +102,6 @@ $science = $_POST['science'];
 $enve = $_POST['enve'];
 $social = $_POST['social'];
 $computer = $_POST['computer'];
-
 $studentid = $_GET['student_id'];
 $standardid = mysql_real_escape_string($standardid);
 $english = mysql_real_escape_string($english);
